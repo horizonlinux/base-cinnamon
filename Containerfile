@@ -48,18 +48,18 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     dnf install \
+    @cinnamon-desktop-environment \
+    xed \
+    sddm \
+    sddm-breeze \
+    sddm-conf \
     -x gnome-software \
     -x lightdm \
     -x slick-greeter \
     -x slick-greeter-cinnamon \
     -x redshift
     -y \
-    --setopt=install_weak_deps=false \
-    @cinnamon-desktop-environment \
-    xed \
-    sddm \
-    sddm-breeze \
-    sddm-conf
+    --setopt=install_weak_deps=false
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
