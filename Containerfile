@@ -89,44 +89,6 @@ RUN --mount=type=cache,dst=/var/cache \
     gtk-update-icon-cache -f /usr/share/icons/hicolor && \
     glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-# Cleanup the start menu
-RUN --mount=type=cache,dst=/var/cache \
-    --mount=type=cache,dst=/var/log \
-    --mount=type=bind,from=ctx,source=/,target=/ctx \
-    --mount=type=tmpfs,dst=/tmp \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-actions.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-applets.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-backgrounds.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-calendar.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-default.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-desklets.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-desktop.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-effects.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-extensions.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-fonts.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-general.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-gestures.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-hotcorner.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-info.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-keyboard.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-mouse.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-nightlight.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-notifications.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-panel.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-power.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-privacy.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-screensaver.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-sound.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-startup.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications//usr/share/applications/cinnamon-settings-themes.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-tiling.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-universal-access.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-user.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-users.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-windows.desktop && \
-    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-workspaces.desktop
-    
-
 # Cleanup
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
