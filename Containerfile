@@ -53,8 +53,6 @@ RUN --mount=type=cache,dst=/var/cache \
     @cinnamon-desktop-environment \
     xed \
     sddm \
-    sddm-breeze \
-    sddm-conf \
     -x gnome-software \
     -x gnome-session \
     -x gnome-shell \
@@ -62,7 +60,8 @@ RUN --mount=type=cache,dst=/var/cache \
     -x lightdm \
     -x slick-greeter \
     -x slick-greeter-cinnamon \
-    -x redshift && \
+    -x redshift \
+    -x plasma-desktop && \
     dnf remove \
     gnome-software \
     gnome-session \
