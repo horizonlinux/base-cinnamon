@@ -62,7 +62,6 @@ RUN --mount=type=cache,dst=/var/cache \
      @cinnamon-desktop-environment \
      xed \
      sddm \
-     git
      git \
      sddm-themes    
 
