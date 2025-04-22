@@ -82,7 +82,6 @@ RUN --mount=type=cache,dst=/var/cache \
      systemctl set-default graphical.target && \
      mkdir -p /etc/sddm.conf.d && \
      bash -c 'echo -e "[Theme]\nCurrent=elarun" > /etc/sddm.conf.d/default.conf'
-     locale-gen
 
 # Install Software manager held toghether by duct tape
 RUN --mount=type=cache,dst=/var/cache \
