@@ -48,18 +48,26 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     dnf install \
+    -y \
+    --setopt=install_weak_deps=false \
     @cinnamon-desktop-environment \
     xed \
     sddm \
     sddm-breeze \
     sddm-conf \
     -x gnome-software \
+    -x gnome-session \
+    -x gnome-shell \
+    -x gdm \
     -x lightdm \
     -x slick-greeter \
     -x slick-greeter-cinnamon \
-    -x redshift
-    -y \
-    --setopt=install_weak_deps=false
+    -x redshift && \
+    dnf remove \
+    gnome-software \
+    gnome-session \
+    gnome-shell \
+    gdm
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
