@@ -47,90 +47,19 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
-    for spice in \
-        -x gnome-shell \
-        -x gnome-session \
-        -x gdm \
-        -x ibus \
-        -x ibus-anthy \
-        -x ibus-anthy-python \
-        -x ibus-chewing \
-        -x ibus-gtk3 \
-        -x ibus-gtk4 \
-        -x ibus-hangul \
-        -x ibus-libpinyin \
-        -x ibus-libs \
-        -x ibus-m17n \
-        -x ibus-panel \
-        -x ibus-setup \
-        -x ibus-typing-booster \
-        -x ibus-xinit  \
-        uupd \
-        git \
-        html2text \
-        flatpak \
-        NetworkManager-adsl \
-        NetworkManager-bluetooth \
-        NetworkManager-openconnect-gnome \
-        NetworkManager-openvpn-gnome \
-        NetworkManager-ppp \
-        NetworkManager-pptp-gnome \
-        NetworkManager-vpnc-gnome \
-        NetworkManager-wifi \
-        NetworkManager-wwan \
-        blueman \
-        cinnamon \
-        cinnamon-control-center \
-        cinnamon-screensaver \
-        firewall-config \
-        glx-utils \
-        gnome-disk-utility \
-        gnome-screenshot \
-        gnome-system-monitor \
-        gnome-terminal \
-        gstreamer1-plugins-ugly-free \
-        gvfs-archive \
-        gvfs-gphoto2 \
-        gvfs-mtp \
-        gvfs-smb \
-        imsettings-gsettings \
-        initial-setup-gui \
-        mesa-dri-drivers \
-        mesa-vulkan-drivers \
-        muffin \
-        nemo-fileroller \
-        nemo-image-converter \
-        nemo-preview \
-        nm-connection-editor \
-        pipewire-alsa \
-        pipewire-pulseaudio \
-        powerline \
-        qgnomeplatform-qt5 \
-        sddm \
-        sddm-breeze \
-        sddm-conf \
-        system-config-printer \
-        totem-video-thumbnailer \
-        wireplumber \
-        xdg-user-dirs-gtk \
-        xorg-x11-drv-amdgpu \
-        xorg-x11-drv-ati \
-        xorg-x11-drv-evdev \
-        xorg-x11-drv-fbdev \
-        xorg-x11-drv-libinput \
-        xorg-x11-drv-nouveau \
-        xorg-x11-drv-qxl \
-        xorg-x11-drv-wacom \
-        xorg-x11-server-Xorg \
-        xorg-x11-xauth \
-        xorg-x11-xinit \
-        xorg-x11-drv-intel \
-        xorg-x11-drv-openchrome \
-        xorg-x11-drv-vesa \
-        xorg-x11-drv-vmware; \
-    do \
-    dnf5 install -y --setopt=install_weak_deps=false $spice; \
-    done && unset -v spice
+    dnf install \
+    -x gnome-software \
+    -x lightdm \
+    -x slick-greeter \
+    -x slick-greeter-cinnamon \
+    -x redshift
+    -y \
+    --setopt=install_weak_deps=false \
+    @cinnamon-desktop-environment \
+    xed \
+    sddm \
+    sddm-breeze \
+    sddm-conf
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
