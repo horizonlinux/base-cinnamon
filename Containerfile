@@ -48,6 +48,23 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     for spice in \
+        -x gnome-shell \
+        -x gnome-session \
+        -x gdm \
+        -x ibus \
+        -x ibus-anthy \
+        -x ibus-anthy-python \
+        -x ibus-chewing \
+        -x ibus-gtk3 \
+        -x ibus-gtk4 \
+        -x ibus-hangul \
+        -x ibus-libpinyin \
+        -x ibus-libs \
+        -x ibus-m17n \
+        -x ibus-panel \
+        -x ibus-setup \
+        -x ibus-typing-booster \
+        -x ibus-xinit  \
         uupd \
         git \
         html2text \
@@ -89,9 +106,9 @@ RUN --mount=type=cache,dst=/var/cache \
         pipewire-pulseaudio \
         powerline \
         qgnomeplatform-qt5 \
-        lightdm \
-        lightdm-gtk \
-        lightdm-gtk-greeter-settings \
+        sddm \
+        sddm-breeze \
+        sddm-conf \
         system-config-printer \
         totem-video-thumbnailer \
         wireplumber \
@@ -121,13 +138,12 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     systemctl disable gdm && \
-    systemctl enable lightdm && \
-    echo 'u lightdm 967 "LightDM daemon" /var/lib/lightdm /sbin/nologin' > /usr/lib/sysusers.d/lightdm.conf && \
+    systemctl enable sdddm && \
+    # echo 'u lightdm 967 "LightDM daemon" /var/lib/lightdm /sbin/nologin' > /usr/lib/sysusers.d/lightdm.conf && \
     echo 'u nm-openconnect 965 "NetworkManager OpenConnect Plugin" /var/lib/nm-openconnect /usr/sbin/nologin' > /usr/lib/sysusers.d/nm-openconnect.conf && \
     echo 'u nm-openvpn 964 "NetworkManager OpenVPN Plugin" /var/lib/nm-openvpn /usr/sbin/nologin' > /usr/lib/sysusers.d/nm-openvpn.conf && \
     echo 'u wsdd 963 "Web Services Dynamic Discovery Daemon" /var/lib/wsdd /usr/sbin/nologin' > /usr/lib/sysusers.d/wsdd.conf && \
     systemctl set-default graphical.target && \
-    echo 'greeter-session=lightdm-gtk-greeter' > /etc/lightdm/lightdm.conf
 
 # Install Software manager held toghether by duct tape
 RUN --mount=type=cache,dst=/var/cache \
@@ -140,6 +156,43 @@ RUN --mount=type=cache,dst=/var/cache \
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
     gtk-update-icon-cache -f /usr/share/icons/hicolor && \
     glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+# Cleanup the start menu
+RUN --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=tmpfs,dst=/tmp \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-actions.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-applets.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-backgrounds.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-calendar.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-default.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-desklets.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-desktop.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-effects.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-extensions.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-fonts.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-general.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-gestures.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-hotcorner.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-info.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-keyboard.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-mouse.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-nightlight.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-notifications.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-panel.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-power.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-privacy.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-screensaver.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-sound.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-startup.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications//usr/share/applications/cinnamon-settings-themes.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-tiling.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-universal-access.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-user.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-users.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-windows.desktop && \
+    nano "NoDisplay = true" >> /usr/share/applications/cinnamon-settings-workspaces.desktop
     
 
 # Cleanup
