@@ -50,9 +50,6 @@ RUN --mount=type=cache,dst=/var/cache \
     dnf install \
     -y \
     --setopt=install_weak_deps=false \
-    @cinnamon-desktop-environment \
-    xed \
-    sddm \
     -x gnome-software \
     -x gnome-session \
     -x gnome-shell \
@@ -61,12 +58,10 @@ RUN --mount=type=cache,dst=/var/cache \
     -x slick-greeter \
     -x slick-greeter-cinnamon \
     -x redshift \
-    -x plasma-desktop && \
-    dnf remove \
-    gnome-software \
-    gnome-session \
-    gnome-shell \
-    gdm
+    -x plasma-desktop \
+    @cinnamon-desktop-environment \
+    xed \
+    sddm 
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
