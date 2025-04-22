@@ -61,7 +61,8 @@ RUN --mount=type=cache,dst=/var/cache \
     -x plasma-desktop \
     @cinnamon-desktop-environment \
     xed \
-    sddm 
+    sddm \
+    git
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
@@ -69,7 +70,7 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     systemctl disable gdm && \
-    systemctl enable sdddm && \
+    systemctl enable sddm && \
     # echo 'u lightdm 967 "LightDM daemon" /var/lib/lightdm /sbin/nologin' > /usr/lib/sysusers.d/lightdm.conf && \
     echo 'u nm-openconnect 965 "NetworkManager OpenConnect Plugin" /var/lib/nm-openconnect /usr/sbin/nologin' > /usr/lib/sysusers.d/nm-openconnect.conf && \
     echo 'u nm-openvpn 964 "NetworkManager OpenVPN Plugin" /var/lib/nm-openvpn /usr/sbin/nologin' > /usr/lib/sysusers.d/nm-openvpn.conf && \
