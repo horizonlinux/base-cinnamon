@@ -56,11 +56,13 @@ RUN --mount=type=cache,dst=/var/cache \
      -x gdm \
      -x redshift \
      -x plasma-desktop \
+     -x slick-greeter \
+     -x slick-greeter-cinnamon \
      @cinnamon-desktop-environment \
      xed \
      git \
-     slick-greeter \
-     slick-greeter-cinnamon \
+     lightdm-gtk \
+     lightdm-gtk-greeter-settings \
      lightdm
 
 # Configure
