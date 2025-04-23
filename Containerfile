@@ -61,7 +61,7 @@ RUN --mount=type=cache,dst=/var/cache \
      -x plasma-desktop \
      @cinnamon-desktop-environment \
      xed \
-     greetg \
+     greetd \
      gtkgreet
      git \
 
