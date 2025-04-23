@@ -62,7 +62,7 @@ RUN --mount=type=cache,dst=/var/cache \
      @cinnamon-desktop-environment \
      xed \
      greetd \
-     gtkgreet
+     gtkgreet \
      git
 
 # Configure
