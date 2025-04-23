@@ -51,9 +51,9 @@ RUN --mount=type=cache,dst=/var/cache \
      -y \
      --setopt=install_weak_deps=false \
      -x gnome-software \
-     -x gnome-session \
-     -x gnome-shell \
-     -x gdm \
+     #-x gnome-session \
+    # -x gnome-shell \
+     #-x gdm \
      -x lightdm \
      -x slick-greeter \
      -x slick-greeter-cinnamon \
@@ -61,17 +61,16 @@ RUN --mount=type=cache,dst=/var/cache \
      -x plasma-desktop \
      @cinnamon-desktop-environment \
      xed \
-     greetd \
-     gtkgreet \
-     git
+     git \
+     gdm
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
-    systemctl enable greetd.service && \
-    # echo 'u sddm 966 "SDDM Greeter Account" /var/lib/sddm /sbin/nologin' > /usr/lib/sysusers.d/lightdm.conf && \
+    systemctl enable gdm && \
+    echo 'u gdm 42 "GNOME Display Manager" /var/lib/gdm' > /usr/lib/sysusers.d/gdm.conf && \
     # echo 'u lightdm 967 "LightDM daemon" /var/lib/lightdm /sbin/nologin' > /usr/lib/sysusers.d/lightdm.conf && \
     echo 'u nm-openconnect 965 "NetworkManager OpenConnect Plugin" /var/lib/nm-openconnect /usr/sbin/nologin' > /usr/lib/sysusers.d/nm-openconnect.conf && \
     echo 'u nm-openvpn 964 "NetworkManager OpenVPN Plugin" /var/lib/nm-openvpn /usr/sbin/nologin' > /usr/lib/sysusers.d/nm-openvpn.conf && \
