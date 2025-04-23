@@ -63,7 +63,7 @@ RUN --mount=type=cache,dst=/var/cache \
      xed \
      greetd \
      gtkgreet
-     git \
+     git
 
 # Configure
 RUN --mount=type=cache,dst=/var/cache \
