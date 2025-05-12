@@ -58,6 +58,8 @@ RUN --mount=type=cache,dst=/var/cache \
      -x plasma-desktop \
      -x slick-greeter \
      -x slick-greeter-cinnamon \
+     -x libswscale \
+     -x libswscale-free \
      @cinnamon-desktop-environment \
      xed \
      git \
