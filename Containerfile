@@ -47,6 +47,8 @@ RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
+    dnf remove -y \
+        libswscale  && \
     dnf install \
      -y \
      --setopt=install_weak_deps=false \
@@ -60,6 +62,8 @@ RUN --mount=type=cache,dst=/var/cache \
      -x slick-greeter-cinnamon \
      -x libswscale \
      -x libswscale-free \
+     -x libavcodec-freeworld \
+     -x libva-intel-driver \
      @cinnamon-desktop-environment \
      xed \
      git \
