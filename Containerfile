@@ -40,6 +40,7 @@ RUN --mount=type=cache,dst=/var/cache \
         libswscale  && \
     dnf install \
      -y \
+     --skip-broken \
      --setopt=install_weak_deps=false \
      -x gnome-software \
      -x gnome-session \
