@@ -30,9 +30,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable $copr; \
     done && unset -v copr && \
     dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop && \
-    dnf -y install --setopt=install_weak_deps=False sddm ublue-brew ublue-fastfetch && \
+    dnf -y install --setopt=install_weak_deps=False ublue-brew ublue-fastfetch && \
     /ctx/build.sh && \
-    systemctl enable sddm && \
     ostree container commit
     
 ### LINTING
