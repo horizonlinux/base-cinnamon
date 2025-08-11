@@ -61,3 +61,9 @@ bash -c 'echo "d /var/crash 0755 root root -" > /etc/sysusers.d/var-crash.conf'
 bash -c 'echo "d /var/lib/AccountsService 0775 root root -" > /etc/sysusers.d/var-AccountsService.conf'
 bash -c 'echo "d /var/lib/AccountsService/icons 0775 root root -" > /etc/sysusers.d/var-AccountsService-icons.conf'
 
+mkdir -p /var/cache/lightdm
+mkdir -p /var/lib/lightdm-data
+chown -R lightdm:lightdm /var/cache/lightdm
+chown -R lightdm:lightdm /var/lib/lightdm-data
+chmod 755 /var/cache/lightdm
+chmod 755 /var/lib/lightdm-data
