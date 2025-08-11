@@ -45,12 +45,14 @@ bash -c 'echo "g nm-fortisslvpn" > /etc/sysusers.d/group-nm-fortisslvpn.conf'
 bash -c 'echo "g nm-openconnect" > /etc/sysusers.d/group-nm-openconnect.conf'
 bash -c 'echo "g nm-openvpn" > /etc/sysusers.d/group-nm-openvpn.conf'
 bash -c 'echo "g sstpc" > /etc/sysusers.d/group-sstpc.conf'
+bash -c 'echo "g lightdm" > /etc/sysusers.d/group-lightdm.conf'
 
 bash -c 'echo "u abrt - - "ABRT system user" - -" > /etc/sysusers.d/user-abrt.conf'
 bash -c 'echo "u nm-fortisslvpn - - "Fortisslvpn user" - -" > /etc/sysusers.d/user-nm-fortisslvpn.conf'
 bash -c 'echo "u nm-openconnect - - "Openconnect user" - -" > /etc/sysusers.d/user-nm-openconnect.conf'
 bash -c 'echo "u nm-openvpn - - "Openvpn user" - -" > /etc/sysusers.d/user-nm-openvpn.conf'
 bash -c 'echo "u sstpc - - "SSTP client user" - -" > /etc/sysusers.d/user-sstpc.conf'
+bash -c 'echo "u lightdm - "Light Display Manager" /var/lib/lightdm" > /etc/sysusers.d/user-lightdm.conf'
 
 sudo rm -rf /var/run
 sudo ln -s /run /var/run
@@ -61,9 +63,13 @@ bash -c 'echo "d /var/crash 0755 root root -" > /etc/sysusers.d/var-crash.conf'
 bash -c 'echo "d /var/lib/AccountsService 0775 root root -" > /etc/sysusers.d/var-AccountsService.conf'
 bash -c 'echo "d /var/lib/AccountsService/icons 0775 root root -" > /etc/sysusers.d/var-AccountsService-icons.conf'
 
+systemd-sysusers
+
+
 mkdir -p /var/cache/lightdm
 mkdir -p /var/lib/lightdm-data
 chown -R lightdm:lightdm /var/cache/lightdm
 chown -R lightdm:lightdm /var/lib/lightdm-data
 chmod 755 /var/cache/lightdm
 chmod 755 /var/lib/lightdm-data
+
