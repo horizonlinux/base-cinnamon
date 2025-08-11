@@ -22,7 +22,17 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
+    for copr in \
+        ublue-os/staging \
+        ublue-os/packages; \
+    do \
+    dnf -y install dnf5-plugins && \
+    dnf -y copr enable $copr; \
+    done && unset -v copr && \
+    dnf -y install @cinnamon-desktop && \
+    dnf -y install --setopt=install_weak_deps=False sddm sddm-wayland ublue-brew ublue-fastfetch && \
     /ctx/build.sh && \
+    systemctl enable sddm && \
     ostree container commit
     
 ### LINTING
