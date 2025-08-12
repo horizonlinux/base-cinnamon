@@ -65,11 +65,3 @@ bash -c 'echo "d /var/lib/AccountsService/icons 0775 root root -" > /etc/sysuser
 
 systemd-sysusers
 
-
-mkdir -p /var/cache/lightdm
-mkdir -p /var/lib/lightdm-data
-chown -R lightdm:lightdm /var/cache/lightdm
-chown -R lightdm:lightdm /var/lib/lightdm-data
-chmod 755 /var/cache/lightdm
-chmod 755 /var/lib/lightdm-data
-
