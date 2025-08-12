@@ -39,6 +39,8 @@ touch /etc/sysusers.d/var-account.conf
 touch /etc/sysusers.d/var-crash.conf
 touch /etc/sysusers.d/var-AccountsService.conf
 touch /etc/sysusers.d/var-AccountsService-icons.conf
+touch /var/cache/lightdm/placeholder
+touch /var/lib/lightdm-data/placeholder
 
 bash -c 'echo "g abrt" > /etc/sysusers.d/group-abrt.conf'
 bash -c 'echo "g nm-fortisslvpn" > /etc/sysusers.d/group-nm-fortisslvpn.conf'
