@@ -30,8 +30,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable $copr; \
     done && unset -v copr && \
     dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop -x slick* -x lightdm* && \
-    dnf -y install --setopt=install_weak_deps=False greetd cosmic-greeter ublue-brew ublue-fastfetch && \
-    systemctl enable greetd && \
+    dnf -y install --setopt=install_weak_deps=False greetd gtkgreet ublue-brew ublue-fastfetch && \
     /ctx/build.sh && \
     ostree container commit
     
