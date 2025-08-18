@@ -31,13 +31,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     done && unset -v copr && \
     dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop && \
     dnf -y install --setopt=install_weak_deps=False ublue-brew ublue-fastfetch && \
-    useradd -r -g lightdm -d /var/lib/lightdm -s /usr/sbin/nologin -c "LightDM daemon" lightdm && \
-    mkdir -p /var/cache/lightdm && \
-    mkdir -p /var/lib/lightdm-data && \
-    chown -R lightdm:lightdm /var/cache/lightdm && \
-    chown -R lightdm:lightdm /var/lib/lightdm-data && \
-    chmod 755 /var/cache/lightdm && \
-    chmod 755 /var/lib/lightdm-data && \
     /ctx/build.sh && \
     ostree container commit
     
