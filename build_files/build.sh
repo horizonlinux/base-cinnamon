@@ -27,9 +27,11 @@ mkdir -p /var/cache/lightdm
 mkdir -p /var/lib/lightdm-data
 mkdir -p /usr/lib/sysusers.d
 
-echo "g lightdm" > /usr/lib/sysusers.d/lightdm-group.conf
+echo "g lightdm" > | \
+          systemd-sysusers --replace=/usr/lib/sysusers.d/lightdm-group.conf -
 
-echo "u lightdm - "Light Display Manager" /var/lib/lightdm" > /usr/lib/sysusers.d/lightdm.conf
+echo "u lightdm - "Light Display Manager" /var/lib/lightdm" | \
+          systemd-sysusers --replace=/usr/lib/sysusers.d/lightdm.conf -
 
 sudo rm -rf /var/run
 sudo ln -s /run /var/run
