@@ -23,6 +23,8 @@ dnf5 install -y tmux
 
 systemctl enable podman.socket
 
+mkdir -p /var/cache/lightdm
+mkdir -p /var/lib/lightdm-data
 mkdir -p /etc/sysusers.d/
 touch /etc/sysusers.d/group-abrt.conf
 touch /etc/sysusers.d/group-nm-fortisslvpn.conf
@@ -56,3 +58,7 @@ sudo ln -s /run /var/run
 
 systemd-sysusers
 
+chown -R lightdm:lightdm /var/cache/lightdm
+chown -R lightdm:lightdm /var/lib/lightdm-data
+chmod 755 /var/cache/lightdm
+chmod 755 /var/lib/lightdm-data
