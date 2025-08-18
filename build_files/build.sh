@@ -27,7 +27,7 @@ mkdir -p /var/cache/lightdm
 mkdir -p /var/lib/lightdm-data
 mkdir -p /usr/lib/sysusers.d
 
-echo 'u lightdm - "Light Display Manager" /var/lib/lightdm\ng lightdm -' > /usr/lib/sysusers.d/lightdm.conf
+echo -e 'u lightdm - "Light Display Manager" /var/lib/lightdm\ng lightdm -' > /usr/lib/sysusers.d/lightdm.conf
 
 sudo rm -rf /var/run
 sudo ln -s /run /var/run
