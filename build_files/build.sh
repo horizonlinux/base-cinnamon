@@ -34,11 +34,6 @@ touch /etc/sysusers.d/user-nm-fortisslvpn.conf
 touch /etc/sysusers.d/user-nm-openconnect.conf
 touch /etc/sysusers.d/user-nm-openvpn.conf
 touch /etc/sysusers.d/user-sstpc.conf
-touch /etc/sysusers.d/var-pptp.conf
-touch /etc/sysusers.d/var-account.conf
-touch /etc/sysusers.d/var-crash.conf
-touch /etc/sysusers.d/var-AccountsService.conf
-touch /etc/sysusers.d/var-AccountsService-icons.conf
 touch /var/cache/lightdm/placeholder
 touch /var/lib/lightdm-data/placeholder
 
@@ -58,12 +53,6 @@ bash -c 'echo "u lightdm - "Light Display Manager" /var/lib/lightdm" > /etc/sysu
 
 sudo rm -rf /var/run
 sudo ln -s /run /var/run
-
-bash -c 'echo "d /run/pptp 0750 root root -" > /etc/sysusers.d/var-pptp.conf'
-bash -c 'echo "d /var/account 0755 root root -" > /etc/sysusers.d/var-account.conf'
-bash -c 'echo "d /var/crash 0755 root root -" > /etc/sysusers.d/var-crash.conf'
-bash -c 'echo "d /var/lib/AccountsService 0775 root root -" > /etc/sysusers.d/var-AccountsService.conf'
-bash -c 'echo "d /var/lib/AccountsService/icons 0775 root root -" > /etc/sysusers.d/var-AccountsService-icons.conf'
 
 systemd-sysusers
 
