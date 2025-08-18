@@ -29,7 +29,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y install dnf5-plugins && \
     dnf -y copr enable $copr; \
     done && unset -v copr && \
-    dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop mint-y-icons xorg* -x slick* -x lightdm* && \
+    dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop mint-y-icons xorg-x11* -x slick* -x lightdm* && \
     dnf -y install --setopt=install_weak_deps=False greetd cosmic-greeter ublue-brew ublue-fastfetch && \
     /ctx/build.sh && \
     ostree container commit
