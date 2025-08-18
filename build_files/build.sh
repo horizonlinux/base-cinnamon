@@ -25,33 +25,11 @@ systemctl enable podman.socket
 
 mkdir -p /var/cache/lightdm
 mkdir -p /var/lib/lightdm-data
-mkdir -p /etc/sysusers.d/
-touch /etc/sysusers.d/group-abrt.conf
-touch /etc/sysusers.d/group-nm-fortisslvpn.conf
-touch /etc/sysusers.d/group-nm-openconnect.conf
-touch /etc/sysusers.d/group-nm-openvpn.conf
-touch /etc/sysusers.d/group-sstpc.conf
-touch /etc/sysusers.d/user-abrt.conf
-touch /etc/sysusers.d/user-nm-fortisslvpn.conf
-touch /etc/sysusers.d/user-nm-openconnect.conf
-touch /etc/sysusers.d/user-nm-openvpn.conf
-touch /etc/sysusers.d/user-sstpc.conf
-touch /var/cache/lightdm/placeholder
-touch /var/lib/lightdm-data/placeholder
+mkdir -p /usr/lib/sysusers.d
 
-bash -c 'echo "g abrt" > /etc/sysusers.d/group-abrt.conf'
-bash -c 'echo "g nm-fortisslvpn" > /etc/sysusers.d/group-nm-fortisslvpn.conf'
-bash -c 'echo "g nm-openconnect" > /etc/sysusers.d/group-nm-openconnect.conf'
-bash -c 'echo "g nm-openvpn" > /etc/sysusers.d/group-nm-openvpn.conf'
-bash -c 'echo "g sstpc" > /etc/sysusers.d/group-sstpc.conf'
-bash -c 'echo "g lightdm" > /etc/sysusers.d/group-lightdm.conf'
+echo "g lightdm" > /usr/lib/sysusers.d/lightdm-group.conf
 
-bash -c 'echo "u abrt - - "ABRT system user" - -" > /etc/sysusers.d/user-abrt.conf'
-bash -c 'echo "u nm-fortisslvpn - - "Fortisslvpn user" - -" > /etc/sysusers.d/user-nm-fortisslvpn.conf'
-bash -c 'echo "u nm-openconnect - - "Openconnect user" - -" > /etc/sysusers.d/user-nm-openconnect.conf'
-bash -c 'echo "u nm-openvpn - - "Openvpn user" - -" > /etc/sysusers.d/user-nm-openvpn.conf'
-bash -c 'echo "u sstpc - - "SSTP client user" - -" > /etc/sysusers.d/user-sstpc.conf'
-bash -c 'echo "u lightdm - "Light Display Manager" /var/lib/lightdm" > /etc/sysusers.d/user-lightdm.conf'
+echo "u lightdm - "Light Display Manager" /var/lib/lightdm" > /usr/lib/sysusers.d/lightdm.conf
 
 sudo rm -rf /var/run
 sudo ln -s /run /var/run
