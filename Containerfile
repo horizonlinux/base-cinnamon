@@ -34,9 +34,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     -x *nemo-fileroller* -x *gnome-calculator* -x *gnome-disk-utility* -x *file-roller* -x *xfburn* -x *simple-scan* -x *eom* -x *shotwell* \
     -x *firefox* -x *hexchat* -x *pidgin* -x *thunderbird* -x *transmission* -x *mpv* -x *xawtv* -x *gnome-software* -x *htop* -x *nvtop* && \
     dnf -y install --setopt=install_weak_deps=False ublue-brew ublue-fastfetch && \
-    systemctl disable cosmic-greeter && \
-    systemctl disable lightdm && \
-    systemctl enable sddm
+    systemctl enable sddm && \
     /ctx/build.sh && \
     ostree container commit
     
