@@ -30,7 +30,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y copr enable $copr; \
     done && unset -v copr && \
     dnf -y remove htop nvtop && \
-    dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop mint-y-icons xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-Xwayland \
+    dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop mint-y-icons xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-Xwayland lightdm-gtk -x slick* \
     -x *nemo-fileroller* -x *gnome-calculator* -x *gnome-disk-utility* -x *file-roller* -x *xfburn* -x *simple-scan* -x *eom* -x *shotwell* \
     -x *firefox* -x *hexchat* -x *pidgin* -x *thunderbird* -x *transmission* -x *mpv* -x *xawtv* -x *gnome-software* -x *htop* -x *nvtop* && \
     dnf -y install --setopt=install_weak_deps=False ublue-brew ublue-fastfetch && \
