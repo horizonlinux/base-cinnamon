@@ -29,8 +29,11 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     dnf -y install dnf5-plugins && \
     dnf -y copr enable $copr; \
     done && unset -v copr && \
-    dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop mint-y-icons xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-Xwayland -x slick* -x lightdm* && \
-    dnf -y install --setopt=install_weak_deps=False greetd cosmic-greeter ublue-brew ublue-fastfetch && \
+    dnf -y remove htop nvtop && \
+    dnf -y install --setopt=install_weak_deps=False @cinnamon-desktop mint-y-icons xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-Xwayland \
+    -x gnome-calculator* -x gnome-disk-utility* -x file-roller* -x xfburn* -x simple-scan* -x eom* -x shotwell* -x firefox* -x hexchat* -x pidgin* -x thunderbird* -x transmission* \
+    -x mpv* -x xawtv* -x gnome-software -x htop* -x nvtop* && \
+    dnf -y install --setopt=install_weak_deps=False ublue-brew ublue-fastfetch && \
     /ctx/build.sh && \
     ostree container commit
     
