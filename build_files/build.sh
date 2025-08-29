@@ -28,7 +28,7 @@ mkdir -p /usr/lib/sysusers.d
 rm -rf /var/run
 ln -s /run /var/run
 
-echo "NoDisplay=true" >> /usr/share/wayland-sessions
-echo "Hidden=true" >> /usr/share/wayland-sessions
+echo "NoDisplay=true" >> /usr/share/wayland-sessions/gnome.desktop
+echo "NoDisplay=true" >> /usr/share/wayland-sessions/gnome-wayland.desktop
 
 systemd-sysusers
