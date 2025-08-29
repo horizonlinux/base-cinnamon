@@ -25,7 +25,10 @@ systemctl enable podman.socket
 
 mkdir -p /usr/lib/sysusers.d
 
-sudo rm -rf /var/run
-sudo ln -s /run /var/run
+rm -rf /var/run
+ln -s /run /var/run
+
+echo "NoDisplay=true" >> /usr/share/wayland-sessions
+echo "Hidden=true" >> /usr/share/wayland-sessions
 
 systemd-sysusers
